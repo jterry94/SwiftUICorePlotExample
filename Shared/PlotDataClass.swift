@@ -53,6 +53,7 @@ class PlotDataClass: NSObject, ObservableObject {
         changingPlotParameters.xLabel = "x"
         changingPlotParameters.yLabel = "exp(-x)"
         changingPlotParameters.lineColor = .blue()
+        changingPlotParameters.title = " y = exp(-x)"
         
         return
     }
@@ -86,6 +87,7 @@ class PlotDataClass: NSObject, ObservableObject {
         changingPlotParameters.xLabel = "x"
         changingPlotParameters.yLabel = "y"
         changingPlotParameters.lineColor = .red()
+        changingPlotParameters.title = " y = x"
         
     }
     

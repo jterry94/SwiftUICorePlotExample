@@ -26,7 +26,6 @@ public struct CorePlot: ViewRepresentable {
         var plotPaddingRight: CGFloat = 10
         var plotPaddingBottom: CGFloat = 10
         var plotPaddingTop: CGFloat = 10
-        var text: String = ""
       
        }
 
@@ -62,7 +61,15 @@ public struct CorePlot: ViewRepresentable {
         newGraph.paddingLeft   = options.plotPaddingLeft
         newGraph.paddingRight  = options.plotPaddingRight
         newGraph.paddingTop    = options.plotPaddingTop
-        newGraph.paddingBottom = options.plotPaddingBottom  
+        newGraph.paddingBottom = options.plotPaddingBottom
+        
+        //Add Plot Title
+        let titleTextStyle: CPTMutableTextStyle = CPTMutableTextStyle()
+        titleTextStyle.color = CPTColor.white()
+        titleTextStyle.fontSize = 20.0
+        titleTextStyle.textAlignment = .center
+        newGraph.titleTextStyle = titleTextStyle
+        newGraph.title = changingPlotParameters.title
 
         // Plot space
         let plotSpace = newGraph.defaultPlotSpace as! CPTXYPlotSpace
@@ -182,6 +189,15 @@ public struct CorePlot: ViewRepresentable {
         guard let plot = graph.plot(at: 0) as? CPTScatterPlot else {return}
         plot.dataLineStyle = theLineStyle
         plot.plotSymbol = plotSymbol
+        
+        //Add Plot Title
+        //Add Plot Title
+        let titleTextStyle: CPTMutableTextStyle = CPTMutableTextStyle()
+        titleTextStyle.color = CPTColor.white()
+        titleTextStyle.fontSize = 20.0
+        titleTextStyle.textAlignment = .center
+        graph.titleTextStyle = titleTextStyle
+        graph.title = changingPlotParameters.title
         
         //Set the plot for reloading
         graph.reloadData()
