@@ -21,8 +21,14 @@ struct ContentView: View {
         
         VStack{
       
-            CorePlot(dataForPlot: $plotDataModel.plotData , xLabel: $plotDataModel.xLabel, yLabel: $plotDataModel.yLabel, xMax: $plotDataModel.xMax, yMax: $plotDataModel.yMax, yMin: $plotDataModel.yMin, xMin: $plotDataModel.xMin)
+            CorePlot(dataForPlot: $plotDataModel.plotData, changingPlotParameters: $plotDataModel.changingPlotParameters)
+                .setPlotPadding(left: 20)
+                .setPlotPadding(right: 20)
+                .setPlotPadding(top: 20)
+                .setPlotPadding(bottom: 20)
                 .padding()
+            
+            Divider()
             
             HStack{
                 Button("Plot y = exp(-x)", action: {self.calculateYEqualseToTheMinusX()} )

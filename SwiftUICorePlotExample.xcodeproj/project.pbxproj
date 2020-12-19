@@ -19,6 +19,8 @@
 		D234923F258C09CB00CB3365 /* PlotDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234923D258C09CB00CB3365 /* PlotDataClass.swift */; };
 		D2349243258C09F400CB3365 /* CorePlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2349242258C09F400CB3365 /* CorePlot.swift */; };
 		D2349244258C09F400CB3365 /* CorePlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2349242258C09F400CB3365 /* CorePlot.swift */; };
+		D2FD4CD9258E4EDD00C8451C /* ChangingPlotParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FD4CD8258E4EDD00C8451C /* ChangingPlotParameters.swift */; };
+		D2FD4CDA258E4EDD00C8451C /* ChangingPlotParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FD4CD8258E4EDD00C8451C /* ChangingPlotParameters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,7 @@
 		D234922E258C080300CB3365 /* SwiftUICorePlotExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftUICorePlotExample.entitlements; sourceTree = "<group>"; };
 		D234923D258C09CB00CB3365 /* PlotDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotDataClass.swift; sourceTree = "<group>"; };
 		D2349242258C09F400CB3365 /* CorePlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePlot.swift; sourceTree = "<group>"; };
+		D2FD4CD8258E4EDD00C8451C /* ChangingPlotParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangingPlotParameters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,7 @@
 				D234920C258C07F900CB3365 /* ContentView.swift */,
 				D2349242258C09F400CB3365 /* CorePlot.swift */,
 				D234923D258C09CB00CB3365 /* PlotDataClass.swift */,
+				D2FD4CD8258E4EDD00C8451C /* ChangingPlotParameters.swift */,
 				D234920B258C07F900CB3365 /* SwiftUICorePlotExampleApp.swift */,
 				D234920D258C07FA00CB3365 /* Assets.xcassets */,
 			);
@@ -220,6 +224,7 @@
 			files = (
 				D2349220258C07FA00CB3365 /* ContentView.swift in Sources */,
 				D2349243258C09F400CB3365 /* CorePlot.swift in Sources */,
+				D2FD4CD9258E4EDD00C8451C /* ChangingPlotParameters.swift in Sources */,
 				D234923E258C09CB00CB3365 /* PlotDataClass.swift in Sources */,
 				D234921E258C07FA00CB3365 /* SwiftUICorePlotExampleApp.swift in Sources */,
 			);
@@ -231,6 +236,7 @@
 			files = (
 				D2349221258C07FA00CB3365 /* ContentView.swift in Sources */,
 				D2349244258C09F400CB3365 /* CorePlot.swift in Sources */,
+				D2FD4CDA258E4EDD00C8451C /* ChangingPlotParameters.swift in Sources */,
 				D234923F258C09CB00CB3365 /* PlotDataClass.swift in Sources */,
 				D234921F258C07FA00CB3365 /* SwiftUICorePlotExampleApp.swift in Sources */,
 			);

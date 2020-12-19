@@ -13,12 +13,7 @@ import CorePlot
 class PlotDataClass: NSObject, ObservableObject {
     
     @Published var plotData = [plotDataType]()
-    @Published var xLabel: String = ""
-    @Published var yLabel: String = ""
-    @Published var xMax = 2.0
-    @Published var yMax = 2.0
-    @Published var yMin = -1.0
-    @Published var xMin = -1.0
+    @Published var changingPlotParameters: ChangingPlotParameters = ChangingPlotParameters()
     
     init(fromLine line: Bool) {
         
@@ -47,13 +42,14 @@ class PlotDataClass: NSObject, ObservableObject {
             plotData.append(dataPoint)
         }
         
-        //Set the axis ranges and titles
-        yMax = 2.0
-        yMin = -1.0
-        xMax = 2.0
-        xMin = -1.0
-        xLabel = "x"
-        yLabel = "exp(-x)"
+        // set the Plot Parameters
+        changingPlotParameters.yMax = 2.0
+        changingPlotParameters.yMin = -1.0
+        changingPlotParameters.xMax = 2.0
+        changingPlotParameters.xMin = -1.0
+        changingPlotParameters.xLabel = "x"
+        changingPlotParameters.yLabel = "exp(-x)"
+        changingPlotParameters.lineColor = .blue()
         
         return
     }
@@ -79,13 +75,15 @@ class PlotDataClass: NSObject, ObservableObject {
         
         }
         
-        //Set the axis ranges and titles
-        yMax = 4.0
-        yMin = -1.0
-        xMax = 4.0
-        xMin = -1.0
-        xLabel = "x"
-        yLabel = "y"
+        //set the Plot Parameters
+        changingPlotParameters.yMax = 4.0
+        changingPlotParameters.yMin = -1.0
+        changingPlotParameters.xMax = 4.0
+        changingPlotParameters.xMin = -1.0
+        changingPlotParameters.xLabel = "x"
+        changingPlotParameters.yLabel = "y"
+        changingPlotParameters.lineColor = .red()
+        
     }
     
     

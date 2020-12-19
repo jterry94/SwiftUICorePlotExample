@@ -19,12 +19,17 @@ public typealias ViewRepresentable = UIViewRepresentable
 
 public struct CorePlot: ViewRepresentable {
     @Binding var dataForPlot : [plotDataType]
-    @Binding var xLabel: String
-    @Binding var yLabel: String
-    @Binding var xMax : Double
-    @Binding var yMax : Double
-    @Binding var yMin : Double
-    @Binding var xMin : Double
+    @Binding var changingPlotParameters: ChangingPlotParameters
+    
+    class Options {
+        var plotPaddingLeft: CGFloat = 10
+        var plotPaddingRight: CGFloat = 10
+        var plotPaddingBottom: CGFloat = 10
+        var plotPaddingTop: CGFloat = 10
+      
+       }
+
+    @State var options = Options()
     
     public func makeUIView(context: Context) -> CPTGraphHostingView {
         
@@ -53,16 +58,16 @@ public struct CorePlot: ViewRepresentable {
         hostView.hostedGraph = newGraph
         
         // Paddings
-        newGraph.paddingLeft   = 10.0
-        newGraph.paddingRight  = 10.0
-        newGraph.paddingTop    = 10.0
-        newGraph.paddingBottom = 10.0
+        newGraph.paddingLeft   = options.plotPaddingLeft
+        newGraph.paddingRight  = options.plotPaddingRight
+        newGraph.paddingTop    = options.plotPaddingTop
+        newGraph.paddingBottom = options.plotPaddingBottom  
 
         // Plot space
         let plotSpace = newGraph.defaultPlotSpace as! CPTXYPlotSpace
         plotSpace.allowsUserInteraction = true
-        plotSpace.yRange = CPTPlotRange(location: yMin as NSNumber, length: (yMax - yMin) as NSNumber)
-        plotSpace.xRange = CPTPlotRange(location: xMin as NSNumber, length: (xMax - xMin) as NSNumber)
+        plotSpace.yRange = CPTPlotRange(location: changingPlotParameters.yMin as NSNumber, length:(changingPlotParameters.yMax - changingPlotParameters.yMin) as NSNumber)
+        plotSpace.xRange = CPTPlotRange(location: changingPlotParameters.xMin as NSNumber, length: (changingPlotParameters.xMax - changingPlotParameters.xMin) as NSNumber)
         
         // Axes
         let axisSet = newGraph.axisSet as! CPTXYAxisSet
@@ -80,14 +85,14 @@ public struct CorePlot: ViewRepresentable {
             y.delegate = context.coordinator
         }
         
-        // Create a blue plot area
-        let blueLineStyle = CPTMutableLineStyle()
-        blueLineStyle.miterLimit    = 1.0
-        blueLineStyle.lineWidth     = 3.0
-        blueLineStyle.lineColor     = .blue()
+        // Create a plot area with color
+        let theLineStyle = CPTMutableLineStyle()
+        theLineStyle.miterLimit    = 1.0
+        theLineStyle.lineWidth     = 3.0
+        theLineStyle.lineColor     = changingPlotParameters.lineColor
         
         let linePlot = CPTScatterPlot(frame: .zero)
-        linePlot.dataLineStyle = blueLineStyle
+        linePlot.dataLineStyle = theLineStyle
         linePlot.identifier    = "Blue Plot" as NSString
         linePlot.interpolation = .curved
         newGraph.add(linePlot)
@@ -96,7 +101,7 @@ public struct CorePlot: ViewRepresentable {
         let symbolLineStyle = CPTMutableLineStyle()
         symbolLineStyle.lineColor = .black()
         let plotSymbol = CPTPlotSymbol.ellipse()
-        plotSymbol.fill          = CPTFill(color: .blue())
+        plotSymbol.fill          = CPTFill(color: changingPlotParameters.lineColor)
         plotSymbol.lineStyle     = symbolLineStyle
         plotSymbol.size          = CGSize(width: 10.0, height: 10.0)
         linePlot.plotSymbol = plotSymbol
@@ -113,7 +118,7 @@ public struct CorePlot: ViewRepresentable {
     }
 
     public func makeCoordinator() -> Coordinator {
-        return Coordinator(parent: self, data: dataForPlot, yLabel: yLabel, xLabel: xLabel)
+        return Coordinator(parent: self, data: dataForPlot, yLabel: changingPlotParameters.yLabel, xLabel: changingPlotParameters.xLabel)
         }
     
     public func updateUIView(_ nsView: CPTGraphHostingView, context: Context) {
@@ -128,7 +133,7 @@ public struct CorePlot: ViewRepresentable {
         
     
    /*
-        Leaving this hear because it may be useful for live updating of graph
+        Leaving this here because it may be useful for live updating of graph
          
         let oldRange =  CPTPlotRange(locationDecimal: CPTDecimalFromDouble(Double(0.0)), lengthDecimal: CPTDecimalFromDouble(Double(2.0)))
         let newRange =  CPTPlotRange(locationDecimal: CPTDecimalFromDouble(Double(0.0)), lengthDecimal: CPTDecimalFromDouble(Double(2.0)))
@@ -145,20 +150,37 @@ public struct CorePlot: ViewRepresentable {
         
         guard let graph = nsView.hostedGraph as? CPTXYGraph else { return }
         
+        let theLineStyle = CPTMutableLineStyle()
+        theLineStyle.miterLimit    = 1.0
+        theLineStyle.lineWidth     = 3.0
+        theLineStyle.lineColor     = changingPlotParameters.lineColor
+        
+        // Add plot symbols
+        let symbolLineStyle = CPTMutableLineStyle()
+        symbolLineStyle.lineColor = .black()
+        let plotSymbol = CPTPlotSymbol.ellipse()
+        plotSymbol.fill          = CPTFill(color: changingPlotParameters.lineColor)
+        plotSymbol.lineStyle     = symbolLineStyle
+        plotSymbol.size          = CGSize(width: 10.0, height: 10.0)
+        
         //Update the data in the Coordinator
         context.coordinator.data = dataForPlot
         
         //Update the axisLabels
         guard let axisSet = graph.axisSet as? CPTXYAxisSet else { return }
         guard let y = axisSet.yAxis else {return}
-        y.title = yLabel
+        y.title = changingPlotParameters.yLabel
         guard let x = axisSet.xAxis else {return}
-        x.title = xLabel
+        x.title = changingPlotParameters.xLabel
         
         //Update the plot range
         guard let plotSpace = graph.defaultPlotSpace as? CPTXYPlotSpace else { return }
-        plotSpace.yRange = CPTPlotRange(location: yMin as NSNumber, length: (yMax - yMin) as NSNumber)
-        plotSpace.xRange = CPTPlotRange(location: xMin as NSNumber, length: (xMax - xMin) as NSNumber)
+        plotSpace.yRange = CPTPlotRange(location: changingPlotParameters.yMin as NSNumber, length:(changingPlotParameters.yMax - changingPlotParameters.yMin) as NSNumber)
+        plotSpace.xRange = CPTPlotRange(location: changingPlotParameters.xMin as NSNumber, length: (changingPlotParameters.xMax - changingPlotParameters.xMin) as NSNumber)
+        
+        guard let plot = graph.plot(at: 0) as? CPTScatterPlot else {return}
+        plot.dataLineStyle = theLineStyle
+        plot.plotSymbol = plotSymbol
         
         //Set the plot for reloading
         graph.reloadData()
@@ -237,4 +259,29 @@ public struct CorePlot: ViewRepresentable {
         
     }
 }
+
+extension CorePlot {
+    func setPlotPadding(left: CGFloat) -> CorePlot {
+        options.plotPaddingLeft = left
+        return self
+    }
+
+    func setPlotPadding(right: CGFloat) -> CorePlot {
+        self.options.plotPaddingRight = right
+        return self
+    }
+
+    func setPlotPadding(top: CGFloat) -> CorePlot {
+        self.options.plotPaddingTop = top
+        return self
+    }
+
+    func setPlotPadding(bottom: CGFloat) -> CorePlot {
+        self.options.plotPaddingBottom = bottom
+        return self
+    }
+    
+}
+
+
 
