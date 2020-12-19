@@ -10,6 +10,8 @@ import CorePlot
 
 class ChangingPlotParameters: NSObject, ObservableObject {
     
+    //These plot parameters are adjustable
+    
     var xLabel: String = "x"
     var yLabel: String = "y"
     var xMax : Double = 2.0

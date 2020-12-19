@@ -17,7 +17,10 @@ class PlotDataClass: NSObject, ObservableObject {
     
     init(fromLine line: Bool) {
         
+        
+        //Must call super init before initializing plot
         super.init()
+       
         
         //Intitialize the first plot
         self.plotYEqualsX()

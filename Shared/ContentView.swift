@@ -22,10 +22,10 @@ struct ContentView: View {
         VStack{
       
             CorePlot(dataForPlot: $plotDataModel.plotData, changingPlotParameters: $plotDataModel.changingPlotParameters)
-                .setPlotPadding(left: 20)
-                .setPlotPadding(right: 20)
-                .setPlotPadding(top: 20)
-                .setPlotPadding(bottom: 20)
+                .setPlotPadding(left: 10)
+                .setPlotPadding(right: 10)
+                .setPlotPadding(top: 10)
+                .setPlotPadding(bottom: 10)
                 .padding()
             
             Divider()

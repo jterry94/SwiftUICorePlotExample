@@ -26,6 +26,7 @@ public struct CorePlot: ViewRepresentable {
         var plotPaddingRight: CGFloat = 10
         var plotPaddingBottom: CGFloat = 10
         var plotPaddingTop: CGFloat = 10
+        var text: String = ""
       
        }
 
