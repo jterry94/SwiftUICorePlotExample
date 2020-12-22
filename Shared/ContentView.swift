@@ -45,14 +45,18 @@ struct ContentView: View {
     
     func calculateYEqualsX(){
         
+        //pass the plotDataModel to the dataCalculator
         dataCalculator.plotDataModel = self.plotDataModel
+        //Calculate the new plotting data and place in the plotDataModel
         dataCalculator.plotYEqualsX()
         
     }
     
     func calculateYEqualseToTheMinusX(){
         
+        //pass the plotDataModel to the dataCalculator
         dataCalculator.plotDataModel = self.plotDataModel
+        //Calculate the new plotting data and place in the plotDataModel
         dataCalculator.ploteToTheMinusX()
         
     }

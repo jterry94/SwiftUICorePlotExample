@@ -74,15 +74,9 @@ class PlotDataClass: NSObject, ObservableObject {
         
         func appendData(dataPoint: [plotDataType])
         {
-           // plotData = []
-            
-        
-
-                //let dataPoint: plotDataType = [.X: x, .Y: y]
+          
             plotData.append(contentsOf: dataPoint)
             pointNumber += 1.0
-            
-           // print(plotData)
             
             
             
