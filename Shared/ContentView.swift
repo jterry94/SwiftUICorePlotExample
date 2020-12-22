@@ -15,6 +15,7 @@ typealias plotDataType = [CPTScatterPlotField : Double]
 
 struct ContentView: View {
     @ObservedObject var plotDataModel = PlotDataClass(fromLine: true)
+    @ObservedObject private var dataCalculator = CalculatePlotData()
     
 
     var body: some View {
@@ -44,12 +45,16 @@ struct ContentView: View {
     
     func calculateYEqualsX(){
         
-        plotDataModel.plotYEqualsX()
+        dataCalculator.plotDataModel = self.plotDataModel
+        dataCalculator.plotYEqualsX()
+        
     }
     
     func calculateYEqualseToTheMinusX(){
         
-        plotDataModel.ploteToTheMinusX()
+        dataCalculator.plotDataModel = self.plotDataModel
+        dataCalculator.ploteToTheMinusX()
+        
     }
    
     

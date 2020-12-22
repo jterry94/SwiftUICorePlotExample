@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D20740D725927AEB00EA5DF1 /* CalculatePlotData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20740D625927AEB00EA5DF1 /* CalculatePlotData.swift */; };
+		D20740D825927AEB00EA5DF1 /* CalculatePlotData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20740D625927AEB00EA5DF1 /* CalculatePlotData.swift */; };
 		D234921E258C07FA00CB3365 /* SwiftUICorePlotExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234920B258C07F900CB3365 /* SwiftUICorePlotExampleApp.swift */; };
 		D234921F258C07FA00CB3365 /* SwiftUICorePlotExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234920B258C07F900CB3365 /* SwiftUICorePlotExampleApp.swift */; };
 		D2349220258C07FA00CB3365 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D234920C258C07F900CB3365 /* ContentView.swift */; };
@@ -24,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D20740D625927AEB00EA5DF1 /* CalculatePlotData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatePlotData.swift; sourceTree = "<group>"; };
 		D234920B258C07F900CB3365 /* SwiftUICorePlotExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUICorePlotExampleApp.swift; sourceTree = "<group>"; };
 		D234920C258C07F900CB3365 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D234920D258C07FA00CB3365 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -77,6 +80,7 @@
 				D2349242258C09F400CB3365 /* CorePlot.swift */,
 				D234923D258C09CB00CB3365 /* PlotDataClass.swift */,
 				D2FD4CD8258E4EDD00C8451C /* ChangingPlotParameters.swift */,
+				D20740D625927AEB00EA5DF1 /* CalculatePlotData.swift */,
 				D234920B258C07F900CB3365 /* SwiftUICorePlotExampleApp.swift */,
 				D234920D258C07FA00CB3365 /* Assets.xcassets */,
 			);
@@ -223,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2349220258C07FA00CB3365 /* ContentView.swift in Sources */,
+				D20740D725927AEB00EA5DF1 /* CalculatePlotData.swift in Sources */,
 				D2349243258C09F400CB3365 /* CorePlot.swift in Sources */,
 				D2FD4CD9258E4EDD00C8451C /* ChangingPlotParameters.swift in Sources */,
 				D234923E258C09CB00CB3365 /* PlotDataClass.swift in Sources */,
@@ -235,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2349221258C07FA00CB3365 /* ContentView.swift in Sources */,
+				D20740D825927AEB00EA5DF1 /* CalculatePlotData.swift in Sources */,
 				D2349244258C09F400CB3365 /* CorePlot.swift in Sources */,
 				D2FD4CDA258E4EDD00C8451C /* ChangingPlotParameters.swift in Sources */,
 				D234923F258C09CB00CB3365 /* PlotDataClass.swift in Sources */,
