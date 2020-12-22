@@ -220,7 +220,7 @@ public struct CorePlot: ViewRepresentable {
         // MARK: - Plot Data Source Methods
         public func numberOfRecords(for plot: CPTPlot) -> UInt
         {
-            return UInt(parent.dataForPlot.count)
+            return UInt(data.count)
         }
 
         public func number(for plot: CPTPlot, field: UInt, record: UInt) -> Any?

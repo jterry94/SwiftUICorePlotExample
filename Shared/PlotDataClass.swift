@@ -63,7 +63,7 @@ class PlotDataClass: NSObject, ObservableObject {
         plotData = []
         
         
-        for i in 0 ..< 60 {
+        for i in 0 ..< 120 {
 
             //create x values here
 
